@@ -22,8 +22,8 @@ def extract_data_from_html(raw_html, xpath_expressions):
             elements = tree.xpath(xpath_expression)
             if elements:
                 module, sub_module = elements[0].text.strip().split("(")
-                data['module'] = [module] * len(elements)
-                data['sub_module'] = [sub_module[:-1]] * len(elements)
+                data['sub_module'] = [sub_module] * len(elements)
+                data['module'] = [module[:-1]] * len(elements)
             else:
                 data[key] = []
 
