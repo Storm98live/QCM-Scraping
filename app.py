@@ -47,7 +47,7 @@ xpath_expressions = {
     'session' : "//tbody//tr//td//div/span[@class='sess color-blue' and not(contains(@style, 'top'))]",
     'année' : "//tbody//tr//td//div/span[@class='sess color-blue' and not(contains(@style, 'top'))]",
     'correction': "//button[contains(@onclick, 'getCor')]/@onclick",
-    'title' : "//div[contains(@style, 'color: white;')]/text()[normalize-space()]",
+    'cours' : "//div[contains(@style, 'color: white;')]/text()[normalize-space()]",
     'module': "//div[@class='page-title-heading']/div/div",
     'sub_module': "//div[@class='page-title-heading']/div/div"
 }
@@ -70,7 +70,7 @@ if add_button:
     # Extract data using XPath
     extracted_data = extract_data_from_html(html_input, xpath_expressions)
     
-    if 'title' in extracted_data:
+    if 'cours' in extracted_data:
         # Get the maximum length among all arrays
         max_length = max(len(value) for value in extracted_data.values())
         
