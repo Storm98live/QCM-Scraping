@@ -27,6 +27,25 @@ def extract_data_from_html(raw_html, xpath_expressions):
             else:
                 data[key] = []
 
+        elif key == 'question':
+            elements = tree.xpath(xpath_expression)
+            questions = []
+            images = []
+            for element in elements:
+                question_text = element.text_content().strip()
+                img_src = element.xpath('.//img/@src')
+                if img_src:
+                    img_src = img_src[0]
+                    full_url = f'https://monqcm-fmpc-um6.com/{img_src}'
+                    images.append(full_url)
+                else:
+                    img_src = ''
+                    images.append(img_src)
+                questions.append(question_text)
+                
+            data['question'] = questions
+            data['image'] = images
+
         else:
             elements = tree.xpath(xpath_expression)
             if elements and isinstance(elements[0], html.HtmlElement):
